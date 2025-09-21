@@ -1,0 +1,113 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-painelweb-dev-d4c20-authRole",
+      "UnauthRoleArn": "arn:aws:iam::471112642534:role/amplify-painelweb-dev-d4c20-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::471112642534:role/amplify-painelweb-dev-d4c20-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-painelweb-dev-d4c20-deployment",
+      "UnauthRoleName": "amplify-painelweb-dev-d4c20-unauthRole",
+      "StackName": "amplify-painelweb-dev-d4c20",
+      "StackId": "arn:aws:cloudformation:us-east-1:471112642534:stack/amplify-painelweb-dev-d4c20/83c6b330-9676-11f0-87bf-12b19ae13069",
+      "AmplifyAppId": "d3qwb4o99il2e8",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-painelweb-dev-d4c20-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
+    }
+  },
+  "auth": {
+    "painelwebdcac5815": {
+      "customAuth": false,
+      "dependsOn": [],
+      "frontendAuthConfig": {
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": []
+        },
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "socialProviders": [],
+        "usernameAttributes": [
+          "EMAIL"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito",
+      "output": {
+        "UserPoolId": "us-east-1_1znHSpM2A",
+        "AppClientIDWeb": "5m0bth3tsi61if6uud15laal0v",
+        "AppClientID": "2naa1rfjugkhfhobm9ci96gfi5",
+        "IdentityPoolId": "us-east-1:b4ec2a24-bfa1-4d19-ab9e-7cd9a7ebad77",
+        "UserPoolArn": "arn:aws:cognito-idp:us-east-1:471112642534:userpool/us-east-1_1znHSpM2A",
+        "IdentityPoolName": "painelwebdcac5815_identitypool_dcac5815__dev",
+        "UserPoolName": "painelwebdcac5815_userpool_dcac5815"
+      },
+      "lastPushTimeStamp": "2025-09-21T02:23:29.446Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-painelweb-dev-d4c20-deployment/amplify-cfn-templates/auth/painelwebdcac5815-cloudformation-template.json",
+        "logicalId": "authpainelwebdcac5815"
+      }
+    }
+  },
+  "function": {
+    "painelweb05e5b4bf": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "lastBuildTimeStamp": "2025-09-21T02:22:21.705Z",
+      "lastBuildType": "PROD",
+      "lastPackageTimeStamp": "2025-09-21T02:22:21.744Z",
+      "distZipFilename": "painelweb05e5b4bf-54523855346d78306c51-build.zip",
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-painelweb-dev-d4c20-deployment",
+        "s3Key": "amplify-builds/painelweb05e5b4bf-54523855346d78306c51-build.zip"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-painelweb-dev-d4c20-deployment/amplify-cfn-templates/function/painelweb05e5b4bf-cloudformation-template.json",
+        "logicalId": "functionpainelweb05e5b4bf"
+      },
+      "lastPushTimeStamp": "2025-09-21T02:23:30.614Z",
+      "output": {
+        "LambdaExecutionRoleArn": "arn:aws:iam::471112642534:role/painelwebLambdaRole675fcca9-dev",
+        "Region": "us-east-1",
+        "Arn": "arn:aws:lambda:us-east-1:471112642534:function:painelweb05e5b4bf-dev",
+        "Name": "painelweb05e5b4bf-dev",
+        "LambdaExecutionRole": "painelwebLambdaRole675fcca9-dev"
+      },
+      "lastPushDirHash": "aIJz4Lu41y+TvMqJADYcIy5Uq6k="
+    }
+  },
+  "api": {
+    "api85e3a35d": {
+      "service": "API Gateway",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "painelweb05e5b4bf",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        }
+      ],
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-painelweb-dev-d4c20-deployment/amplify-cfn-templates/api/api85e3a35d-cloudformation-template.json",
+        "logicalId": "apiapi85e3a35d"
+      },
+      "lastPushTimeStamp": "2025-09-21T02:23:29.451Z",
+      "output": {
+        "ApiName": "api85e3a35d",
+        "RootUrl": "https://pi0tz5vsr8.execute-api.us-east-1.amazonaws.com/dev",
+        "ApiId": "pi0tz5vsr8"
+      },
+      "lastPushDirHash": "e90kE+2/uBjpP8EYROMIQkg3oRU="
+    }
+  }
+}

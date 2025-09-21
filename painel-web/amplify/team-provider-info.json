@@ -1,0 +1,30 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-painelweb-dev-d4c20-authRole",
+      "UnauthRoleArn": "arn:aws:iam::471112642534:role/amplify-painelweb-dev-d4c20-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::471112642534:role/amplify-painelweb-dev-d4c20-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-painelweb-dev-d4c20-deployment",
+      "UnauthRoleName": "amplify-painelweb-dev-d4c20-unauthRole",
+      "StackName": "amplify-painelweb-dev-d4c20",
+      "StackId": "arn:aws:cloudformation:us-east-1:471112642534:stack/amplify-painelweb-dev-d4c20/83c6b330-9676-11f0-87bf-12b19ae13069",
+      "AmplifyAppId": "d3qwb4o99il2e8",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-painelweb-dev-d4c20-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
+    },
+    "categories": {
+      "auth": {
+        "painelwebdcac5815": {}
+      },
+      "function": {
+        "painelweb05e5b4bf": {
+          "deploymentBucketName": "amplify-painelweb-dev-d4c20-deployment",
+          "s3Key": "amplify-builds/painelweb05e5b4bf-54523855346d78306c51-build.zip"
+        }
+      },
+      "api": {
+        "api85e3a35d": {}
+      }
+    }
+  }
+}
