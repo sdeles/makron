@@ -21,6 +21,9 @@
           "deploymentBucketName": "amplify-painelweb-dev-d4c20-deployment",
           "s3Key": "amplify-builds/painelweb05e5b4bf-54523855346d78306c51-build.zip"
         }
+      },
+      "api": {
+        "api85e3a35d": {}
       }
     }
   }
