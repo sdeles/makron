@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "paths": {
+    "/vendas": {
+      "name": "/vendas",
+      "lambdaFunction": "painelweb05e5b4bf",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "read"
+        ]
+      }
+    }
+  }
+}

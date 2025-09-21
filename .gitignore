@@ -18,7 +18,7 @@ override.tf.json
 
 # Arquivos sensíveis do Amplify
 # O aws-exports pode conter IDs da sua conta AWS
-aws-exports.js
+#aws-exports.js
 
 # Arquivos de ambiente - NUNCA ENVIE ARQUIVOS .env
 .env
