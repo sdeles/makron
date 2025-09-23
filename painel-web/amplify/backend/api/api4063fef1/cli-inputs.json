@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "paths": {
+    "/vendas": {
+      "name": "/vendas",
+      "lambdaFunction": "painelweb05e5b4bf",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "create",
+          "read",
+          "update",
+          "delete"
+        ]
+      }
+    },
+    "/produtos": {
+      "name": "/produtos",
+      "lambdaFunction": "lambdaProdutos",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "create",
+          "read",
+          "update",
+          "delete"
+        ]
+      }
+    }
+  }
+}

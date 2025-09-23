@@ -114,3 +114,14 @@ resource "aws_lambda_permission" "api_gw_permission" {
   # Restringe a permissão para a nossa API Gateway específica
   source_arn = "${aws_apigatewayv2_api.webhook_api.execution_arn}/*/*"
 }
+
+resource "aws_dynamodb_table" "products_table" {
+  name           = "${var.project_name}Produtos"
+  billing_mode   = "PAY_PER_REQUEST"
+  hash_key       = "id"
+
+  attribute {
+    name = "id"
+    type = "S" # S para String. Usaremos um ID único para cada produto.
+  }
+}

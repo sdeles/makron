@@ -13,6 +13,41 @@
       "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-painelweb-dev-d4c20-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
     }
   },
+  "api": {
+    "api4063fef1": {
+      "service": "API Gateway",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "painelweb05e5b4bf",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "lambdaProdutos",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        }
+      ],
+      "lastPushTimeStamp": "2025-09-23T05:36:06.054Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-painelweb-dev-d4c20-deployment/amplify-cfn-templates/api/api4063fef1-cloudformation-template.json",
+        "logicalId": "apiapi4063fef1"
+      },
+      "output": {
+        "ApiName": "api4063fef1",
+        "RootUrl": "https://45x3q8iyxg.execute-api.us-east-1.amazonaws.com/dev",
+        "ApiId": "45x3q8iyxg"
+      },
+      "lastPushDirHash": "mFWVvqMahnX3asbawTIG6Gq+jvY="
+    }
+  },
   "auth": {
     "painelwebdcac5815": {
       "customAuth": false,
@@ -48,7 +83,7 @@
         "IdentityPoolName": "painelwebdcac5815_identitypool_dcac5815__dev",
         "UserPoolName": "painelwebdcac5815_userpool_dcac5815"
       },
-      "lastPushTimeStamp": "2025-09-21T02:23:29.446Z",
+      "lastPushTimeStamp": "2025-09-23T05:36:06.057Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-painelweb-dev-d4c20-deployment/amplify-cfn-templates/auth/painelwebdcac5815-cloudformation-template.json",
         "logicalId": "authpainelwebdcac5815"
@@ -60,19 +95,6 @@
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda",
-      "lastBuildTimeStamp": "2025-09-21T02:22:21.705Z",
-      "lastBuildType": "PROD",
-      "lastPackageTimeStamp": "2025-09-21T02:22:21.744Z",
-      "distZipFilename": "painelweb05e5b4bf-54523855346d78306c51-build.zip",
-      "s3Bucket": {
-        "deploymentBucketName": "amplify-painelweb-dev-d4c20-deployment",
-        "s3Key": "amplify-builds/painelweb05e5b4bf-54523855346d78306c51-build.zip"
-      },
-      "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-painelweb-dev-d4c20-deployment/amplify-cfn-templates/function/painelweb05e5b4bf-cloudformation-template.json",
-        "logicalId": "functionpainelweb05e5b4bf"
-      },
-      "lastPushTimeStamp": "2025-09-21T02:23:30.614Z",
       "output": {
         "LambdaExecutionRoleArn": "arn:aws:iam::471112642534:role/painelwebLambdaRole675fcca9-dev",
         "Region": "us-east-1",
@@ -80,34 +102,46 @@
         "Name": "painelweb05e5b4bf-dev",
         "LambdaExecutionRole": "painelwebLambdaRole675fcca9-dev"
       },
-      "lastPushDirHash": "aIJz4Lu41y+TvMqJADYcIy5Uq6k="
-    }
-  },
-  "api": {
-    "api85e3a35d": {
-      "service": "API Gateway",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": [
-        {
-          "category": "function",
-          "resourceName": "painelweb05e5b4bf",
-          "attributes": [
-            "Name",
-            "Arn"
-          ]
-        }
-      ],
+      "lastPushTimeStamp": "2025-09-23T05:36:07.211Z",
       "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-painelweb-dev-d4c20-deployment/amplify-cfn-templates/api/api85e3a35d-cloudformation-template.json",
-        "logicalId": "apiapi85e3a35d"
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-painelweb-dev-d4c20-deployment/amplify-cfn-templates/function/painelweb05e5b4bf-cloudformation-template.json",
+        "logicalId": "functionpainelweb05e5b4bf"
       },
-      "lastPushTimeStamp": "2025-09-21T02:23:29.451Z",
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-painelweb-dev-d4c20-deployment",
+        "s3Key": "amplify-builds/painelweb05e5b4bf-54584e4355457a6b4f4a-build.zip"
+      },
+      "lastBuildTimeStamp": "2025-09-23T05:34:58.500Z",
+      "lastBuildType": "PROD",
+      "lastPackageTimeStamp": "2025-09-23T05:34:58.536Z",
+      "distZipFilename": "painelweb05e5b4bf-54584e4355457a6b4f4a-build.zip",
+      "lastPushDirHash": "1P0IV9UhzPuuAZXv8OjbzJA8gy0="
+    },
+    "lambdaProdutos": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "lastBuildTimeStamp": "2025-09-23T04:14:09.894Z",
+      "lastBuildType": "PROD",
+      "lastPackageTimeStamp": "2025-09-23T04:14:09.935Z",
+      "distZipFilename": "lambdaProdutos-32596855624b71565279-build.zip",
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-painelweb-dev-d4c20-deployment",
+        "s3Key": "amplify-builds/lambdaProdutos-32596855624b71565279-build.zip"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-painelweb-dev-d4c20-deployment/amplify-cfn-templates/function/lambdaProdutos-cloudformation-template.json",
+        "logicalId": "functionlambdaProdutos"
+      },
+      "lastPushTimeStamp": "2025-09-23T05:36:06.060Z",
       "output": {
-        "ApiName": "api85e3a35d",
-        "RootUrl": "https://pi0tz5vsr8.execute-api.us-east-1.amazonaws.com/dev",
-        "ApiId": "pi0tz5vsr8"
+        "LambdaExecutionRoleArn": "arn:aws:iam::471112642534:role/painelwebLambdaRoled1b6213d-dev",
+        "Region": "us-east-1",
+        "Arn": "arn:aws:lambda:us-east-1:471112642534:function:lambdaProdutos-dev",
+        "Name": "lambdaProdutos-dev",
+        "LambdaExecutionRole": "painelwebLambdaRoled1b6213d-dev"
       },
-      "lastPushDirHash": "e90kE+2/uBjpP8EYROMIQkg3oRU="
+      "lastPushDirHash": "CmA5v9YjM4P36YKXyffzwT6VabY="
     }
   }
 }

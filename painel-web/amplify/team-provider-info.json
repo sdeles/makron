@@ -19,11 +19,15 @@
       "function": {
         "painelweb05e5b4bf": {
           "deploymentBucketName": "amplify-painelweb-dev-d4c20-deployment",
-          "s3Key": "amplify-builds/painelweb05e5b4bf-54523855346d78306c51-build.zip"
+          "s3Key": "amplify-builds/painelweb05e5b4bf-54584e4355457a6b4f4a-build.zip"
+        },
+        "lambdaProdutos": {
+          "deploymentBucketName": "amplify-painelweb-dev-d4c20-deployment",
+          "s3Key": "amplify-builds/lambdaProdutos-32596855624b71565279-build.zip"
         }
       },
       "api": {
-        "api85e3a35d": {}
+        "api4063fef1": {}
       }
     }
   }

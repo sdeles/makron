@@ -1,6 +1,6 @@
 export type AmplifyDependentResourcesAttributes = {
   "api": {
-    "api85e3a35d": {
+    "api4063fef1": {
       "ApiId": "string",
       "ApiName": "string",
       "RootUrl": "string"
@@ -18,6 +18,13 @@ export type AmplifyDependentResourcesAttributes = {
     }
   },
   "function": {
+    "lambdaProdutos": {
+      "Arn": "string",
+      "LambdaExecutionRole": "string",
+      "LambdaExecutionRoleArn": "string",
+      "Name": "string",
+      "Region": "string"
+    },
     "painelweb05e5b4bf": {
       "Arn": "string",
       "LambdaExecutionRole": "string",

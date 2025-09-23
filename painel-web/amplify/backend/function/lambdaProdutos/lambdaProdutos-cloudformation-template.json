@@ -47,12 +47,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "painelweb05e5b4bf",
+            "lambdaProdutos",
             {
               "Fn::Join": [
                 "",
                 [
-                  "painelweb05e5b4bf",
+                  "lambdaProdutos",
                   "-",
                   {
                     "Ref": "env"
@@ -89,12 +89,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "painelwebLambdaRole675fcca9",
+            "painelwebLambdaRoled1b6213d",
             {
               "Fn::Join": [
                 "",
                 [
-                  "painelwebLambdaRole675fcca9",
+                  "painelwebLambdaRoled1b6213d",
                   "-",
                   {
                     "Ref": "env"
@@ -175,10 +175,13 @@
             {
               "Effect": "Allow",
               "Action": [
+                "dynamodb:GetItem",
+                "dynamodb:PutItem",
+                "dynamodb:UpdateItem",
+                "dynamodb:DeleteItem",
                 "dynamodb:Scan"
               ],
               "Resource": [
-                "arn:aws:dynamodb:us-east-1:471112642534:table/MercadoLivreVendas",
                 "arn:aws:dynamodb:us-east-1:471112642534:table/MercadoLivreProdutos"
               ]
             }
