@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import { styled, useTheme } from '@mui/material/styles';
 import {
-  AppBar as MuiAppBar, // Renomeado para evitar conflito
+  AppBar as MuiAppBar,
   Toolbar,
   Typography,
   Button,
@@ -21,18 +21,18 @@ import {
 
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import InventoryIcon from '@mui/icons-material/Inventory';
+import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
+import BarChartIcon from '@mui/icons-material/BarChart'; // Ícone para Análise
 import MenuIcon from '@mui/icons-material/Menu';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 
 const drawerWidth = 240;
 
-// Estilo para o AppBar que NÃO se move
 const AppBar = styled(MuiAppBar)(({ theme }) => ({
   zIndex: theme.zIndex.drawer + 1,
 }));
 
-// Estilos para o Drawer que sabe abrir e fechar
 const openedMixin = (theme) => ({
   width: drawerWidth,
   transition: theme.transitions.create('width', {
@@ -79,8 +79,6 @@ const DrawerHeader = styled('div')(({ theme }) => ({
     ...theme.mixins.toolbar,
 }));
 
-// --- COMPONENTE PRINCIPAL ---
-
 const MainLayout = ({ signOut, user, toggleColorMode }) => {
   const theme = useTheme();
   const location = useLocation();
@@ -123,10 +121,25 @@ const MainLayout = ({ signOut, user, toggleColorMode }) => {
         <DrawerHeader />
         <Divider />
         <List>
+          {/* --- ALTERAÇÃO AQUI --- */}
           <ListItem disablePadding sx={{ display: 'block' }} component={Link} to="/">
             <ListItemButton selected={location.pathname === '/'} sx={{ minHeight: 48, justifyContent: open ? 'initial' : 'center', px: 2.5, }}>
               <ListItemIcon sx={{ minWidth: 0, mr: open ? 3 : 'auto', justifyContent: 'center', }}><DashboardIcon /></ListItemIcon>
-              <ListItemText primary="Dashboard" sx={{ opacity: open ? 1 : 0 }} />
+              <ListItemText primary="Resumo" sx={{ opacity: open ? 1 : 0 }} />
+            </ListItemButton>
+          </ListItem>
+          {/* --- NOVO ITEM DE MENU ADICIONADO --- */}
+          <ListItem disablePadding sx={{ display: 'block' }} component={Link} to="/analise">
+            <ListItemButton selected={location.pathname.startsWith('/analise')} sx={{ minHeight: 48, justifyContent: open ? 'initial' : 'center', px: 2.5, }}>
+              <ListItemIcon sx={{ minWidth: 0, mr: open ? 3 : 'auto', justifyContent: 'center', }}><BarChartIcon /></ListItemIcon>
+              <ListItemText primary="Análise" sx={{ opacity: open ? 1 : 0 }} />
+            </ListItemButton>
+          </ListItem>
+          {/* ------------------------------------- */}
+          <ListItem disablePadding sx={{ display: 'block' }} component={Link} to="/vendas">
+            <ListItemButton selected={location.pathname === '/vendas'} sx={{ minHeight: 48, justifyContent: open ? 'initial' : 'center', px: 2.5, }}>
+              <ListItemIcon sx={{ minWidth: 0, mr: open ? 3 : 'auto', justifyContent: 'center', }}><ReceiptLongIcon /></ListItemIcon>
+              <ListItemText primary="Vendas" sx={{ opacity: open ? 1 : 0 }} />
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding sx={{ display: 'block' }} component={Link} to="/produtos">
@@ -139,7 +152,7 @@ const MainLayout = ({ signOut, user, toggleColorMode }) => {
       </Drawer>
 
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        <DrawerHeader /> {/* Espaçador para o conteúdo não ficar atrás da AppBar */}
+        <DrawerHeader />
         <Outlet /> 
       </Box>
     </Box>

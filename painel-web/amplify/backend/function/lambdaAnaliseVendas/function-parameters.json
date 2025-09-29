@@ -1,0 +1,14 @@
+{
+  "permissions": {},
+  "lambdaLayers": [],
+  "environmentVariableList": [
+    {
+      "cloudFormationParameterName": "vendasTable",
+      "environmentVariableName": "VENDAS_TABLE"
+    },
+    {
+      "cloudFormationParameterName": "produtosTable",
+      "environmentVariableName": "PRODUTOS_TABLE"
+    }
+  ]
+}

@@ -15,7 +15,6 @@ exports.handler = async (event) => {
   };
 
   try {
-    // 1. Buscar todas as vendas e produtos
     const [vendasData, produtosData] = await Promise.all([
       ddbDocClient.send(new ScanCommand({ TableName: vendasTableName })),
       ddbDocClient.send(new ScanCommand({ TableName: produtosTableName }))
@@ -24,39 +23,57 @@ exports.handler = async (event) => {
     const vendas = vendasData.Items || [];
     const produtos = produtosData.Items || [];
     
-    // 2. Criar um mapa de SKU para CUSTOS
     const custosPorSku = produtos.reduce((map, produto) => {
+      const custos = {
+        custoProduto: produto.custo || 0,
+        custoFrete: produto.custoFreteMedio || 0
+      };
       if (produto.sku) {
-        map[produto.sku] = {
-          custoProduto: produto.custo || 0,
-          custoFrete: produto.custoFreteMedio || 0
-        };
+        map[produto.sku] = custos;
+      }
+      if (produto.skusAntigos && Array.isArray(produto.skusAntigos)) {
+        produto.skusAntigos.forEach(skuAntigo => {
+          map[skuAntigo] = custos;
+        });
       }
       return map;
     }, {});
     
-    // --- PONTO DE OBSERVAÇÃO 1 ---
     console.log("MAPA DE CUSTOS CRIADO:", JSON.stringify(custosPorSku, null, 2));
 
-    // 3. Enriquecer cada venda com os custos corretos
     const vendasEnriquecidas = vendas.map(venda => {
       let custoDosProdutos = 0;
       let custosOperacionais = 0;
 
-      if (venda.items) {
+      if (venda.items && Array.isArray(venda.items)) {
+        
+        // Primeiro, somamos os custos que são por item (custo do produto e taxa de venda)
         venda.items.forEach(item => {
-          // --- PONTO DE OBSERVAÇÃO 2 ---
           console.log(`-- Processando item com SKU: ${item.sku}`);
-          
           const custos = custosPorSku[item.sku] || { custoProduto: 0, custoFrete: 0 };
-          
-          // --- PONTO DE OBSERVAÇÃO 3 ---
           console.log(`-- Custos encontrados para o SKU ${item.sku}:`, custos);
           
           custoDosProdutos += custos.custoProduto * item.quantity;
           custosOperacionais += item.sale_fee || 0;
-          custosOperacionais += custos.custoFrete * item.quantity;
         });
+
+        // --- AQUI ESTÁ A NOVA LÓGICA DO FRETE ---
+        // Depois, adicionamos o custo do frete, que é por VENDA
+        if (typeof venda.fretePersonalizado === 'number') {
+          // Se existe um frete manual, ele tem prioridade
+          console.log(`-- Usando Frete Personalizado para a venda ${venda.mercadoLivreId}: ${venda.fretePersonalizado}`);
+          custosOperacionais += venda.fretePersonalizado;
+        } else {
+          // Se não, calculamos o frete médio somando o de cada item
+          let freteMedioCalculado = 0;
+          venda.items.forEach(item => {
+            const custos = custosPorSku[item.sku] || { custoProduto: 0, custoFrete: 0 };
+            freteMedioCalculado += custos.custoFrete * item.quantity;
+          });
+          console.log(`-- Usando Frete Médio para a venda ${venda.mercadoLivreId}: ${freteMedioCalculado}`);
+          custosOperacionais += freteMedioCalculado;
+        }
+        // ------------------------------------------
       }
       
       return { 

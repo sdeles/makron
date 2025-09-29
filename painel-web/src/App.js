@@ -6,49 +6,45 @@ import '@aws-amplify/ui-react/styles.css';
 import awsExports from './aws-exports';
 import { Routes, Route } from 'react-router-dom';
 
-// --- NOVAS IMPORTAÇÕES PARA O TEMA ---
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { lightTheme, darkTheme } from './theme';
-// ------------------------------------
 
-// Importando nossos componentes de layout e páginas
+// --- NOVAS IMPORTAÇÕES PARA O SELETOR DE DATAS ---
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { ptBR } from 'date-fns/locale'; // Para traduzir o calendário para português
+// --------------------------------------------------
+
+// Importando nossos componentes
 import MainLayout from './layouts/MainLayout';
-import DashboardPage from './pages/DashboardPage';
+import ResumoPage from './pages/ResumoPage';
 import ProdutosPage from './pages/ProdutosPage';
+import VendasPage from './pages/VendasPage';
+import AnalisePage from './pages/AnalisePage';
 
 Amplify.configure(awsExports);
 
 function App({ signOut, user }) {
-  // 1. Estado para controlar o modo (light/dark)
   const [mode, setMode] = useState('light');
-
-  // 2. Função para alternar o modo
-  const colorMode = useMemo(
-    () => ({
-      toggleColorMode: () => {
-        setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
-      },
-    }),
-    [],
-  );
-
-  // 3. Seleciona o objeto de tema correto com base no estado
+  const colorMode = useMemo(() => ({ toggleColorMode: () => { setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light')); }, }), []);
   const theme = useMemo(() => (mode === 'light' ? lightTheme : darkTheme), [mode]);
 
   return (
-    // 4. Prover o tema para toda a aplicação
-    <ThemeProvider theme={theme}>
-      {/* CssBaseline normaliza o CSS e aplica a cor de fundo do tema */}
-      <CssBaseline />
-      <Routes>
-        {/* 5. Passar a função de toggle para o Layout */}
-        <Route path="/" element={<MainLayout signOut={signOut} user={user} toggleColorMode={colorMode.toggleColorMode} />}>
-          <Route index element={<DashboardPage />} />
-          <Route path="produtos" element={<ProdutosPage />} />
-        </Route>
-      </Routes>
-    </ThemeProvider>
+    // Envolvemos o ThemeProvider com o LocalizationProvider
+    <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={ptBR}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Routes>
+          <Route path="/" element={<MainLayout signOut={signOut} user={user} toggleColorMode={colorMode.toggleColorMode} />}>
+            <Route index element={<ResumoPage />} /> 
+            <Route path="produtos" element={<ProdutosPage />} />
+            <Route path="vendas" element={<VendasPage />} />
+            <Route path="analise" element={<AnalisePage />} />
+          </Route>
+        </Routes>
+      </ThemeProvider>
+    </LocalizationProvider>
   );
 }
 

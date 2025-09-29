@@ -1,4 +1,4 @@
-// src/pages/ProdutosPage.js
+// src/pages/ProdutosPage.js (Versão Simplificada)
 import React, { useState, useEffect } from 'react';
 import { get, post, put, del } from 'aws-amplify/api';
 import {
@@ -22,15 +22,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
 
 const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
+  position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
+  width: 400, bgcolor: 'background.paper', border: '2px solid #000', boxShadow: 24, p: 4,
 };
 
 const ProdutosPage = () => {
@@ -38,10 +31,10 @@ const ProdutosPage = () => {
   const [loading, setLoading] = useState(true);
   const [open, setOpen] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
-  // --- ADICIONADO NOVO CAMPO AO ESTADO INICIAL ---
+  // Estado inicial agora é mais simples
   const [currentProduto, setCurrentProduto] = useState({ id: null, nome: '', sku: '', custo: 0, preco: 0, custoFreteMedio: 0 });
 
-  const apiName = 'api4063fef1'; // O nome correto da sua API principal
+  const apiName = 'api4063fef1'; // Certifique-se que este nome está correto
   const path = '/produtos';
 
   const fetchProdutos = async () => {
@@ -59,13 +52,13 @@ const ProdutosPage = () => {
   };
 
   const handleSave = async () => {
-    // --- ADICIONADO NOVO CAMPO AO OBJETO DE DADOS ---
+    // Objeto de dados agora é mais simples
     const produtoData = {
         nome: currentProduto.nome,
         sku: currentProduto.sku,
         custo: parseFloat(currentProduto.custo),
         preco: parseFloat(currentProduto.preco),
-        custoFreteMedio: parseFloat(currentProduto.custoFreteMedio), // Novo campo
+        custoFreteMedio: parseFloat(currentProduto.custoFreteMedio),
     };
 
     try {
@@ -93,10 +86,7 @@ const ProdutosPage = () => {
 
   const handleDelete = async (id) => {
     try {
-      const restOperation = del({
-        apiName,
-        path: `${path}/${id}`
-      });
+      const restOperation = del({ apiName, path: `${path}/${id}` });
       await restOperation.response;
       fetchProdutos();
     } catch (error) {
@@ -110,7 +100,6 @@ const ProdutosPage = () => {
 
   const handleOpen = () => {
     setIsEditing(false);
-    // --- ADICIONADO NOVO CAMPO AO RESETAR ---
     setCurrentProduto({ id: null, nome: '', sku: '', custo: 0, preco: 0, custoFreteMedio: 0 });
     setOpen(true);
   };
@@ -147,7 +136,6 @@ const ProdutosPage = () => {
               <TableCell>SKU</TableCell>
               <TableCell align="right">Custo (R$)</TableCell>
               <TableCell align="right">Preço (R$)</TableCell>
-              {/* --- NOVA COLUNA NA TABELA --- */}
               <TableCell align="right">Frete Médio (R$)</TableCell>
               <TableCell align="center">Ações</TableCell>
             </TableRow>
@@ -159,7 +147,6 @@ const ProdutosPage = () => {
                 <TableCell>{produto.sku}</TableCell>
                 <TableCell align="right">{produto.custo?.toFixed(2)}</TableCell>
                 <TableCell align="right">{produto.preco?.toFixed(2)}</TableCell>
-                {/* --- NOVO DADO NA TABELA --- */}
                 <TableCell align="right">{produto.custoFreteMedio?.toFixed(2)}</TableCell>
                 <TableCell align="center">
                   <IconButton onClick={() => handleEditOpen(produto)}><EditIcon /></IconButton>
@@ -175,10 +162,10 @@ const ProdutosPage = () => {
         <Box sx={style}>
           <Typography variant="h6" component="h2">{isEditing ? 'Editar Produto' : 'Adicionar Novo Produto'}</Typography>
           <TextField margin="normal" fullWidth label="Nome do Produto" name="nome" value={currentProduto.nome} onChange={handleChange} />
-          <TextField margin="normal" fullWidth label="SKU" name="sku" value={currentProduto.sku} onChange={handleChange} />
+          <TextField margin="normal" fullWidth label="SKU Principal" name="sku" value={currentProduto.sku} onChange={handleChange} />
+          {/* O campo Autocomplete para SKUs antigos foi removido */}
           <TextField margin="normal" fullWidth label="Custo (ex: 19.99)" name="custo" type="number" value={currentProduto.custo} onChange={handleChange} />
           <TextField margin="normal" fullWidth label="Preço de Venda (ex: 39.99)" name="preco" type="number" value={currentProduto.preco} onChange={handleChange} />
-          {/* --- NOVO CAMPO NO FORMULÁRIO --- */}
           <TextField margin="normal" fullWidth label="Custo de Frete Médio (ex: 25.50)" name="custoFreteMedio" type="number" value={currentProduto.custoFreteMedio} onChange={handleChange} />
           <Box sx={{ mt: 2, display: 'flex', justifyContent: 'flex-end' }}>
             <Button onClick={handleClose}>Cancelar</Button>

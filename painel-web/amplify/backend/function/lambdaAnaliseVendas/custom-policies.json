@@ -1,0 +1,23 @@
+[
+  {
+    "Effect": "Allow",
+    "Action": [
+      "dynamodb:Scan"
+    ],
+    "Resource": ["arn:aws:dynamodb:us-east-1:471112642534:table/MercadoLivreVendas/index/DateCreatedIndex"]
+  },
+  {
+    "Effect": "Allow",
+    "Action": [
+      "dynamodb:Scan"
+    ],
+    "Resource": ["arn:aws:dynamodb:us-east-1:471112642534:table/MercadoLivreProdutos"]
+  },
+  {
+    "Effect": "Allow",
+    "Action": [
+      "dynamodb:Scan"
+    ],
+    "Resource": ["arn:aws:dynamodb:us-east-1:471112642534:table/MercadoLivreVendas"]
+  }
+]

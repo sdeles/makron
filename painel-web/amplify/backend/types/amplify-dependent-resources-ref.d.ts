@@ -18,6 +18,20 @@ export type AmplifyDependentResourcesAttributes = {
     }
   },
   "function": {
+    "lambdaAnaliseVendas": {
+      "Arn": "string",
+      "LambdaExecutionRole": "string",
+      "LambdaExecutionRoleArn": "string",
+      "Name": "string",
+      "Region": "string"
+    },
+    "lambdaAtualizaVenda": {
+      "Arn": "string",
+      "LambdaExecutionRole": "string",
+      "LambdaExecutionRoleArn": "string",
+      "Name": "string",
+      "Region": "string"
+    },
     "lambdaProdutos": {
       "Arn": "string",
       "LambdaExecutionRole": "string",

@@ -26,6 +26,26 @@
           "delete"
         ]
       }
+    },
+    "/vendas/modificacoes": {
+      "name": "/vendas/modificacoes",
+      "lambdaFunction": "lambdaAtualizaVenda",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "update"
+        ]
+      }
+    },
+    "/analise": {
+      "name": "/analise",
+      "lambdaFunction": "lambdaAnaliseVendas",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "read"
+        ]
+      }
     }
   }
 }

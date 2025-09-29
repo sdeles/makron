@@ -1,0 +1,9 @@
+[
+  {
+    "Effect": "Allow",
+    "Action": [
+      "dynamodb:UpdateItem"
+    ],
+    "Resource": ["arn:aws:dynamodb:us-east-1:471112642534:table/MercadoLivreVendas"]
+  }
+]

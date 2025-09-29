@@ -19,11 +19,21 @@
       "function": {
         "painelweb05e5b4bf": {
           "deploymentBucketName": "amplify-painelweb-dev-d4c20-deployment",
-          "s3Key": "amplify-builds/painelweb05e5b4bf-54584e4355457a6b4f4a-build.zip"
+          "s3Key": "amplify-builds/painelweb05e5b4bf-714537686a484742644f-build.zip"
         },
         "lambdaProdutos": {
           "deploymentBucketName": "amplify-painelweb-dev-d4c20-deployment",
           "s3Key": "amplify-builds/lambdaProdutos-32596855624b71565279-build.zip"
+        },
+        "lambdaAtualizaVenda": {
+          "deploymentBucketName": "amplify-painelweb-dev-d4c20-deployment",
+          "s3Key": "amplify-builds/lambdaAtualizaVenda-3942537744783462356a-build.zip"
+        },
+        "lambdaAnaliseVendas": {
+          "vendasTable": "MercadoLivreVendas",
+          "produtosTable": "MercadoLivreProdutos",
+          "deploymentBucketName": "amplify-painelweb-dev-d4c20-deployment",
+          "s3Key": "amplify-builds/lambdaAnaliseVendas-39466b51717950756d74-build.zip"
         }
       },
       "api": {

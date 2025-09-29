@@ -17,6 +17,22 @@
           ],
           "category": "function",
           "resourceName": "lambdaProdutos"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "lambdaAtualizaVenda"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "lambdaAnaliseVendas"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -52,6 +68,17 @@
     }
   },
   "function": {
+    "lambdaAnaliseVendas": {
+      "build": true,
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "lambdaAtualizaVenda": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "lambdaProdutos": {
       "build": true,
       "providerPlugin": "awscloudformation",
@@ -64,6 +91,54 @@
     }
   },
   "parameters": {
+    "AMPLIFY_function_lambdaAnaliseVendas_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "lambdaAnaliseVendas"
+        }
+      ]
+    },
+    "AMPLIFY_function_lambdaAnaliseVendas_produtosTable": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "lambdaAnaliseVendas"
+        }
+      ]
+    },
+    "AMPLIFY_function_lambdaAnaliseVendas_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "lambdaAnaliseVendas"
+        }
+      ]
+    },
+    "AMPLIFY_function_lambdaAnaliseVendas_vendasTable": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "lambdaAnaliseVendas"
+        }
+      ]
+    },
+    "AMPLIFY_function_lambdaAtualizaVenda_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "lambdaAtualizaVenda"
+        }
+      ]
+    },
+    "AMPLIFY_function_lambdaAtualizaVenda_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "lambdaAtualizaVenda"
+        }
+      ]
+    },
     "AMPLIFY_function_lambdaProdutos_deploymentBucketName": {
       "usedBy": [
         {
